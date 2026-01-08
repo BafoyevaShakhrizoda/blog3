@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ post.title }}</title>
+</head>
+<body>
+    <h1>{{ post.title }}</h1>
+
+    <p>{{ post.content }}</p>
+    <small>{{ post.created_at }}</small>
+
+    <hr>
+    <a href="{% url 'post_update' post.id %}">✏️ Tahrirlash</a> |
+    <a href="{% url 'post_delete' post.id %}">🗑 O‘chirish</a> |
+    <a href="{% url 'post_list' %}">⬅ Orqaga</a>
+</body>
+</html>
