@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+   {% load static %}
+<link rel="stylesheet" href="{% static 'eboozor/ebozoor.css' %}">
+
+</head>
+<body>
+
+<div class="container">
+    <h2>Profil yaratish</h2>
+
+    {% for message in messages %}
+        <div class="message {{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+
+    <form method="post">
+        {% csrf_token %}
+
+        <label>Name</label>
+        <input type="text" name="name" required>
+
+        <label>Email</label>
+        <input type="email" name="email" required>
+
+        <label>Password</label>
+        <input type="password" name="password" required>
+
+        <button type="submit">Ro‘yxatdan o‘tish</button>
+    </form>
+
+    <div class="link">
+        <a href="{% url 'login' %}">Profilga kirish</a>
+    </div>
+</div>
+
+</body>
+</html>
