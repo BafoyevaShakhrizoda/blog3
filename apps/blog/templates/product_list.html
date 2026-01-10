@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product List</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f9f9f9; }
+        h1 { color: #333; }
+        table { width: 100%; border-collapse: collapse; background: white; margin-top: 20px; }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #f2f2f2; }
+        a { text-decoration: none; color: #3498db; }
+        .btn-add { padding: 8px 12px; background: #2ecc71; color: white; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Product List</h1>
+    <a href="{% url 'product_add' %}" class="btn-add">Add New Product</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Available</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td><a href="{% url 'product_detail' product.id %}">{{ product.title }}</a></td>
+                <td>{{ product.category }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.stock }}</td>
+                <td>{{ product.is_available }}</td>
+                <td>
+                    <a href="{% url 'product_update' product.id %}">Edit</a> |
+                    <a href="{% url 'product_delete' product.id %}">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="7">No products found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
