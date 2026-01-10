@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Category</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f9f9f9; }
+        .container { max-width: 400px; margin: auto; background: white; padding: 20px; border-radius: 8px; }
+        h1 { color: #333; margin-bottom: 20px; }
+        label { display: block; margin-bottom: 5px; }
+        input { width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 4px; border: 1px solid #ccc; }
+        button { padding: 10px 15px; background: #2ecc71; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        a { margin-left: 10px; text-decoration: none; color: #3498db; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Add Category</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Save</button>
+            <a href="{% url 'category_list' %}">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>

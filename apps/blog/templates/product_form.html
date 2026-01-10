@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f9f9f9; }
+        .container { background: white; padding: 20px; border-radius: 8px; max-width: 500px; margin: auto; }
+        h1 { color: #333; margin-bottom: 20px; }
+        label { display: block; margin: 10px 0 5px; }
+        input, select, textarea { width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 4px; border: 1px solid #ccc; }
+        button { padding: 10px 15px; background: #2ecc71; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        a { text-decoration: none; color: #3498db; margin-left: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{% if form.instance.pk %}Update Product{% else %}Add Product{% endif %}</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Save</button>
+            <a href="{% url 'product_list' %}">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>

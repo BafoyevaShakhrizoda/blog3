@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Product</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        button, a {
+            padding: 10px 15px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .btn-danger {
+            background-color: #e74c3c;
+            color: white;
+        }
+        .btn-secondary {
+            background-color: #95a5a6;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Are you sure you want to delete "{{ object.title }}"?</h2>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn-danger">Yes, delete</button>
+            <a href="{% url 'product_list' %}" class="btn-secondary">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>
